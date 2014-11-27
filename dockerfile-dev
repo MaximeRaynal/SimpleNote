@@ -21,7 +21,7 @@ RUN python -m easy_install pip
 
 RUN python -m pip install Django
 
-RUN mkdir /var/www/
+RUN mkdir /var/SimpleNote/
 
 ADD setup.sh /root/setup.sh
 RUN chmod u+x /root/setup.sh
