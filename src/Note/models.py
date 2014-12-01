@@ -72,11 +72,11 @@ class Page(object):
             #unTag #1autre-tag #tag.composé #premier_tag#secondtag
 
         """
-        return re.compile('#[^#]+[\\s#]*').findall(self.text)\
+        return re.compile(r'#[^#]+[\s#]*').findall(self.text)\
                                                     .map(lambda tag: tag[1:])
 
 class Tag(models.Model):
-    """ Représentation d'un tag *
+    """ Représentation d'un tag
 
         Les tags comportent un système de hierarchie, un parent à N enfants.
         Appliquer un tag à un élément revient à lui appliqué tout ses parents

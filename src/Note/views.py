@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from Note.models import Note
-from Note.models import Tag
+from note.models import Note
+from note.models import Tag
 
 import json
 
