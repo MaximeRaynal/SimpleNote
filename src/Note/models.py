@@ -72,8 +72,8 @@ class Page(object):
             #unTag #1autre-tag #tag.composé #premier_tag#secondtag
 
         """
-        return re.compile(r'#[^#]+[\s#]*').findall(self.text)\
-                                                    .map(lambda tag: tag[1:])
+        return re.compile(r'#[^#\s]+[\s]*').findall(self.text)\
+                                          .map(lambda tag: tag[1:].strip())
 
 class Tag(models.Model):
     """ Représentation d'un tag
