@@ -39,7 +39,7 @@ class Note(models.Model):
 
         for element in note_directory:
             if element.endswith('.md'):
-                self.pages.append(Page(element))
+                self.pages.append(Page().load(element))
 
         return
 
@@ -55,10 +55,17 @@ class Page(object):
         Tags : :see_also get_tags
 
     """
-    def __init__(self, page_name):
-        self.text = open(element, 'r').readlines()
-        self.name = element.split('_')[1]
-        self.order = element.split('_')[0]
+
+    def __init__(self):
+        self.name = "Test"
+        self.order = 1
+        self.text = ""
+
+    def load_from_file(self, page_name):
+        self.text = open(page_name, 'r').readlines()
+        self.name = page_name.split('_')[1]
+        self.order = page_name.split('_')[0]
+        return self
 
     def __str__(self):
         return self.order + '_' + self.name
@@ -72,8 +79,9 @@ class Page(object):
             #unTag #1autre-tag #tag.composé #premier_tag#secondtag
 
         """
-        return set(re.compile(r'#[^#\s]+[\s]*').findall(self.text)\
-                                          .map(lambda tag: tag[1:].strip()))
+        return set(map(lambda tag: tag[1:].strip(),
+                          re.compile(r'#[^#\s]+[\s]*').findall(self.text)))
+
 
 class Tag(models.Model):
     """ Représentation d'un tag
