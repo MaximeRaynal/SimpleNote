@@ -32,16 +32,28 @@ class Note(models.Model):
     def __str__(self):
         return self.name
 
-    def laod_page(self, user):
+    def laod_page(self):
         """ Charge les pages (fichier stocké) associé à la note """
-        note_directory = os.path.join(settings.NOTE_DIR, user)
+        note_directory = os.path.join(settings.NOTE_DIR, author)
         note_directory = os.path.join(note_directory, self.name)
 
         for element in note_directory:
             if element.endswith('.md'):
                 self.pages.append(Page().load(element))
 
-        return
+    def save(self):
+        """ Enregistre la note sur le disque """
+        passnote_directory = os.path.join(settings.NOTE_DIR, author)
+        note_directory = os.path.join(note_directory, self.name)
+        if not os.path.isdir(note_directory):
+            os.mkdir(self.name)
+
+        for page in self.pages:
+            page_path = os.path.join(note_directory, page.__str__() + '.md')
+            with open(page_path, 'w') as f:
+                print(page.text, file=f)
+
+
 
 class Page(object):
     """ Représentation d'une page
@@ -53,18 +65,19 @@ class Page(object):
         Nom : ordre_NomDeLaPage
         Texte : contenu du fichier
         Tags : :see_also get_tags
-
     """
 
     def __init__(self):
         self.name = "Test"
         self.order = 1
         self.text = ""
+        self.tags = set()
 
     def load_from_file(self, page_name):
         self.text = open(page_name, 'r').readlines()
         self.name = page_name.split('_')[1]
         self.order = page_name.split('_')[0]
+        self.tags = get_tags()
         return self
 
     def __str__(self):
@@ -88,7 +101,6 @@ class Tag(models.Model):
 
         Les tags comportent un système de hierarchie, un parent à N enfants.
         Appliquer un tag à un élément revient à lui appliqué tout ses parents
-
     """
     name = models.CharField(max_length=100)
     description = models.TextField()
