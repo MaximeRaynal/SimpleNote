@@ -1,5 +1,5 @@
 # Ignored files
 *.pyc
 *__pycache__/*
-*migratrion/*
+*migratrions/*
 *.sqlite3
