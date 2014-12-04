@@ -1,5 +1,5 @@
 from django.test import TestCase
-from note.models import Page
+from note.models.page import Page
 
 # Create your tests here.
 

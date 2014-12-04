@@ -3,8 +3,8 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-from note.models import Note
-from note.models import Tag
+from note.models.note import Note
+from note.models.tag import Tag
 
 import json
 

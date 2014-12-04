@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from note.models import Note
-from note.models import Tag
+from note.models.note import Note
+from note.models.tag import Tag
 
 # Register your models here.
 admin.site.register(Note)
