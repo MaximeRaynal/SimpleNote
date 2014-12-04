@@ -47,6 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
 
 ROOT_URLCONF = 'SimpleNote.urls'
@@ -83,7 +84,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
-ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+NOTE_DIR = os.path.join(BASE_DIR, 'data')
 
-NOTE_DIR = os.path.join('data')

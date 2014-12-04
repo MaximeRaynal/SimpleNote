@@ -8,5 +8,6 @@ urlpatterns = patterns('',
 
     url(r'^api/', include('note.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
 )
