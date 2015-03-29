@@ -7,8 +7,8 @@ from django.db import models
 class Note(models.Model):
     """ Représentation d'une note comme un ensemble de page.
 
-        La plus part des infos sont stocké de manière physique dans les dossiers
-        le stockage en BDD sert à faciliter la recherche.
+        La plus part des infos sont stocké de manière physique dans les
+        dossiers le stockage en BDD sert à faciliter la recherche.
 
         Sur le disque une note est stocké dans le dossier settings.NOTE_DIR,
         à l'intérieur d'un dossier portant le nom de l'utilisateur.
@@ -21,11 +21,7 @@ class Note(models.Model):
     last_update = models.DateTimeField()
     is_crypted = models.BooleanField(default=False)
     author = models.ForeignKey(User)
-    tags = models.ManyToManyField('Tag')
-
-    def __init__(self):
-        self.pages = list()
-        return
+    tags = models.ManyToManyField('Tag', null=True)
 
     def __str__(self):
         return self.name

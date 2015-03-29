@@ -11,4 +11,7 @@ fi
 CURRENT_FOLDER_PATH=$(dirname $(readlink -f $0))
 SOURCE_FOLDER='/src'
 
+# Ressetting right on folder
+chown -R maxime $CURRENT_FOLDER_PATH$SOURCE_FOLDER
+
 docker.io run -i -t -p 8081:80 -v $CURRENT_FOLDER_PATH$SOURCE_FOLDER:/var/SimpleNote ubuntu:django bash
