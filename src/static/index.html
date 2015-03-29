@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Note</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="edit-panel-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="edit-panel" class="hidden">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-11">
+                <input type="text" id="note-title" class="form-control" placeholder="Titre de la Note" />
+            </div>
+            <div class="col-md-1">
+                <button type="button" id="display-menu-btn" class="pull-right btn btn-default">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </button>
+            </div>
+        </div>
+        <div id="text-block" class="col-md-12" >
+            <span id="note-id" class="sub-text pull-left">Note id : 51f7e7ea-4add-43d8-9e71-3ee9ac0816ae</span>
+            <span class="sub-text pull-right">Last save time : 29/12/91 22:00:03</span>
+            <textarea id="note-text" class="form-control" rows="0" cols="0"></textarea>
+        </div>
+        <div class="hidden" id="param-block">
+            <label>Privacy</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    Allow public acces
+                </label>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon glyphicon glyphicon-globe"></span>
+              <input type="url" id="share-link" class="form-control">
+            </div>
+            <div class="checkbox disabled">
+                <label>
+                    <input type="checkbox" value="" disabled>
+                    Encrypt
+                </label>
+            </div>
+        </div>
+        <div id="edit-panel-footer" class="clearfix col-md-12">
+            <nav>
+                <ul class="pager pager-sm">
+                    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </form>
+</div>
+<div id="content-panel" class="container-fluid">
+    <div id="menu" class="col-md-1">
+        <p class="brand">Simple Note</p>
+        <ul class="menu-entry">
+            <li><button id="create-note-button" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create Note</button></li>
+            <li>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="filter-type" id="filter-type-additive" value="additive" checked>
+                    Additive Filter
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="filter-type" id="filter-type-exclusive" value="exclusive">
+                    Exclusive Filter
+                  </label>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="column-block col-md-4" >
+        <div id="tag-filter-panel" class="panel panel-default">
+             <div class="panel-heading">
+                <h3 class="panel-title">Tags</h3>
+            </div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <input type="search" class="form-control" placeholder="Filter..." aria-describedby="basic-addon2">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                </div>
+                <div id="tags-list">
+                    <button type="button" class="btn btn-default tag">Tags 1</button>
+                    <button type="button" class="btn btn-default tag">Tags 2</button>
+                    <button type="button" class="btn btn-default tag">Tags plus long 3</button>
+                    <button type="button" class="btn btn-default tag">Tags 4</button>
+                    <button type="button" class="btn btn-default tag">Tags 5</button>
+                    <button type="button" class="btn btn-default tag">Tags 6</button>
+                    <button type="button" class="btn btn-default tag">Tags 7</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column-block col-md-7">
+        <div id="file-selection-panel" >
+            <div id="tag-filter-panel" class="panel panel-default">
+                 <div class="panel-heading">
+                    <h3 class="panel-title">Notes</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-2">
+                        <div class="panel panel-default note">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Nom de la note</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-center media-middle">
+                                        <img class="media-object note-pic" src="file.png" alt="File icons">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer clearfix">
+                                <button type="button" class="btn btn-default action-button pull-left" >
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                <button type="button" class="btn btn-default action-button pull-right" >
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="scripts/explorer.js"></script>
+<script type="text/javascript" src="scripts/edit-panel.js"></script>
+</body>
+</html>

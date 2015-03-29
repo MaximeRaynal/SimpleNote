@@ -1,0 +1,98 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  background-color: #FBFFF7;
+  color: #3A3B37;
+}
+
+#content-panel {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  z-index: 1;
+}
+
+.panel-heading {
+  width: 100%;
+}
+
+#menu {
+  height: 100%;
+  background-color: #000033;
+  color: #FFFFFF;
+
+  margin: 0%;
+}
+
+
+#tag-filter-panel {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0px;
+}
+
+#tags-list {
+  padding-top: 3%;
+
+}
+
+#file-selection-panel {
+  height: 100%;
+  border-radius: 0px;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+.column-block {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.brand {
+  padding-top: 1.2em;
+  font-size: 1.4em;
+  margin-bottom: 3em;
+  font-weight: bold;
+}
+
+.menu-entry {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.menu-entry > li {
+  list-style-type: none;
+  list-style-position: inside;
+
+  padding-bottom: 2em;
+}
+
+.tag {
+  margin-right: 1em;
+  margin-top: 1.3em;
+
+  border-radius: 3em;
+}
+
+.action-button {
+  height: 100%;
+  width: 50%;
+
+  padding: 0px;
+  margin: 0px;
+  border-radius: 0px;
+}
+
+.note > .panel-footer {
+  padding: 0px;
+}

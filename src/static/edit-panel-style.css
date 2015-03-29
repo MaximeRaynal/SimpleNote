@@ -1,0 +1,48 @@
+
+#edit-panel {
+    z-index: 2;
+
+    width:93%;
+    height: 98%;
+    margin: auto;
+
+    background-color: #EEEEEE;
+
+    box-shadow: 0px 0px 5em;
+
+    border-radius: 0px 0px 10px 10px;
+
+}
+
+#edit-panel > form {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    padding-top: 1em;
+}
+
+#note-text {
+    margin-top: 2em;
+    height: 100%;
+    resize: none;
+}
+
+#text-block {
+    height: 95%;
+    padding: 0em;
+}
+
+#param-block {
+    height: 95%;
+    padding-top: 1em;
+}
+
+#edit-panel-footer {
+    margin-top: 1em;
+}
+
+.sub-text {
+    color: #AAAAAA;
+    font-size: 0.9em;
+    font-style: italic;
+}
