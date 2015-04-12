@@ -22,7 +22,7 @@ class Page(object):
         self.text = open(page_name, 'r').readlines()
         self.name = page_name.split('_')[1]
         self.order = page_name.split('_')[0]
-        self.tags = get_tags()
+        self.tags = self.get_tags()
         return self
 
     def __str__(self):
