@@ -1,10 +1,10 @@
 
 #edit-panel {
-    z-index: 2;
+    z-index: 3;
 
     width:93%;
     height: 98%;
-    margin: auto;
+    margin-left: 3.5%;
 
     background-color: #EEEEEE;
 
@@ -12,6 +12,25 @@
 
     border-radius: 0px 0px 10px 10px;
 
+    position:  absolute;
+
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+
+.edit-panel {
+    visibility: hidden;
+    top: -98%;
+    opacity: 0;
+}
+
+.edit-panel-enabled {
+    visibility: visible;
+    opacity: 1;
+    top: 0px;
 }
 
 #edit-panel > form {

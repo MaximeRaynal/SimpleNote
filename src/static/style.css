@@ -96,3 +96,7 @@ body {
 .note > .panel-footer {
   padding: 0px;
 }
+
+div.input-group:nth-child(1) > input:nth-child(1) {
+  z-index: 2;
+}
