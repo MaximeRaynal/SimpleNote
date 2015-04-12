@@ -1,8 +1,11 @@
 import os
+import uuid
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+
+from note.models.page import Page
 
 class Note(models.Model):
     """ Représentation d'une note comme un ensemble de page.
@@ -12,8 +15,10 @@ class Note(models.Model):
 
         Sur le disque une note est stocké dans le dossier settings.NOTE_DIR,
         à l'intérieur d'un dossier portant le nom de l'utilisateur.
-        Une note est dossier contenant les pages et les attachments.
+        Une note est un dossier contenant les pages et les attachments.
+        Le dossier est nommé nomNote_uuid
     """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     description = models.TextField()
     privacy_state = models.CharField(max_length=20)
@@ -28,7 +33,7 @@ class Note(models.Model):
 
     def laod_page(self):
         """ Charge les pages (fichier stocké) associé à la note """
-        note_directory = os.path.join(settings.NOTE_DIR, author)
+        note_directory = os.path.join(settings.NOTE_DIR, self.author)
         note_directory = os.path.join(note_directory, self.name)
 
         for element in note_directory:
@@ -37,13 +42,15 @@ class Note(models.Model):
 
     def save(self):
         """ Enregistre la note sur le disque """
-        passnote_directory = os.path.join(settings.NOTE_DIR, author)
-        note_directory = os.path.join(note_directory, self.name)
+        passnote_directory = os.path.join(settings.NOTE_DIR, self.author)
+        note_directory = os.path.join(passnote_directory, self.name + '_' + self.uuid)
         if not os.path.isdir(note_directory):
             os.mkdir(self.name)
 
         for page in self.pages:
             page_path = os.path.join(note_directory, page.__str__() + '.md')
             with open(page_path, 'w') as f:
-                print(page.text, file=f)
+                f.truncate()
+                f.write(page.text)
+
 
