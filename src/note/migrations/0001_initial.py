@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Note',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('name', models.CharField(max_length=50)),
                 ('description', models.TextField()),
                 ('privacy_state', models.CharField(max_length=20)),
@@ -31,10 +31,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tag',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField()),
-                ('parent', models.ForeignKey(to='note.Tag')),
+                ('parent', models.ForeignKey(blank=True, to='note.Tag', null=True)),
             ],
             options={
             },
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='note',
             name='tags',
-            field=models.ManyToManyField(to='note.Tag'),
+            field=models.ManyToManyField(to='note.Tag', null=True),
             preserve_default=True,
         ),
     ]
