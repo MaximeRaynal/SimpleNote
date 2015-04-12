@@ -11,8 +11,8 @@ import json
 @require_http_methods(["GET"])
 @login_required
 def index(request):
-    """ Point d'entrée de l'app appelle Angular JS """
-    return HttpResponse("Done")
+    """ Point d'entrée de sert l'application HTML JS CSS """
+    return render(request, 'note/index.html')
 
 @require_http_methods(["GET"])
 @login_required
