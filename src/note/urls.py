@@ -3,7 +3,6 @@ from django.conf.urls import patterns, url
 from note import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='index'),
     url(r'notes\.json', views.notes, name='all_notes'),
     url(r'note/id-(?P<note_id>\d+)\.json',
                                          views.note_by_id, name='note_by_id'),

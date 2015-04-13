@@ -10,12 +10,6 @@ import json
 
 @require_http_methods(["GET"])
 @login_required
-def index(request):
-    """ Point d'entrée de sert l'application HTML JS CSS """
-    return render(request, 'note/index.html')
-
-@require_http_methods(["GET"])
-@login_required
 def notes(request):
     """ Retourne toutes les notes au format JSON """
     return HttpResponse(json.dumps(

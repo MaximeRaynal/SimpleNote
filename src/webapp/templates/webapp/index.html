@@ -1,10 +1,11 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Simple Note</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="edit-panel-style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/edit-panel-style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 </head>
@@ -114,7 +115,7 @@
                             <div class="panel-body">
                                 <div class="media">
                                     <div class="media-center media-middle">
-                                        <img class="media-object note-pic" src="file.png" alt="File icons">
+                                        <img class="media-object note-pic" src="{% static 'webapp/file.png' %}" alt="File icons">
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +135,7 @@
     </div>
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="scripts/explorer.js"></script>
-<script type="text/javascript" src="scripts/edit-panel.js"></script>
+<script type="text/javascript" src="{% static 'webapp/scripts/explorer.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/scripts/edit-panel.js' %}"></script>
 </body>
 </html>
