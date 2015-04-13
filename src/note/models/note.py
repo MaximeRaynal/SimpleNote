@@ -53,4 +53,10 @@ class Note(models.Model):
                 f.truncate()
                 f.write(page.text)
 
+    def light_serialization(self):
+        properties = dict()
+        properties['uuid'] = str(self.note_id)
+        properties['name'] = str(self.name)
+        return properties
+
 
