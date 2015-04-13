@@ -33,9 +33,10 @@ def tags(request):
         c'est probablement plus performant qu'avec SQLite
     """
     tags_list = set()
-    tags_list = [note_tags for note in Note.objects.filter(author=request.user)
-                           for note_tags in note.tags]
-    return HttpResponse(json.dumps(tags_list),content_type='application/json')
+    tags_list = [note_tags.name for note in Note.objects.filter(author=request.user)
+                           for note_tags in note.tags.all]
+
+    return HttpResponse(json.dumps(tags_list), content_type='application/json')
 
 @require_http_methods(["POST"])
 @login_required
