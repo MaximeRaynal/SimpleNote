@@ -18,7 +18,7 @@ class Note(models.Model):
         Une note est un dossier contenant les pages et les attachments.
         Le dossier est nommé nomNote_uuid
     """
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    note_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     description = models.TextField()
     privacy_state = models.CharField(max_length=20)
@@ -40,10 +40,10 @@ class Note(models.Model):
             if element.endswith('.md'):
                 self.pages.append(Page().load(element))
 
-    def save(self):
+    def save_on_disk(self):
         """ Enregistre la note sur le disque """
         passnote_directory = os.path.join(settings.NOTE_DIR, self.author)
-        note_directory = os.path.join(passnote_directory, self.name + '_' + self.uuid)
+        note_directory = os.path.join(passnote_directory, self.name + '_' + self.note_id)
         if not os.path.isdir(note_directory):
             os.mkdir(self.name)
 
