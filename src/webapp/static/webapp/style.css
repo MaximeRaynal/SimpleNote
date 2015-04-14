@@ -93,6 +93,11 @@ body {
   border-radius: 0px;
 }
 
+.note > .panel-heading {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
 .note > .panel-footer {
   padding: 0px;
 }

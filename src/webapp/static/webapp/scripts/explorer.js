@@ -50,7 +50,7 @@ function loadAllNote() {
                 '<div class="col-md-2">' +
                         '<div class="panel panel-default note"> ' +
                             '<div class="panel-heading">' +
-                                '<h4 class="panel-title">' + elemnt.name + '</h4> ' +
+                                '<h5 class="panel-title">' + elemnt.name + '</h5> ' +
                             '</div>' +
                             '<div class="panel-body">' +
                                 '<div class="media">' +
