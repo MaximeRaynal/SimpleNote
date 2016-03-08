@@ -1,5 +1,8 @@
+import os
 import json
 import re
+
+import FileExistsError
 
 class Note(object):
     """
@@ -10,19 +13,61 @@ class Note(object):
     def __init__(self, meta):
         super(Note, self).__init__()
         self.meta = meta
-        self.pages = meta.pages
+        self.pages = list()
+
+        for page_file in meta.pages:
+            p = Page(page_file)
+            self.pages.add(p)
+
+
         self.attachments = meta.attachments
 
+    @staticmethod
+    def load(self, note_folder):
+        meta = NoteMeta.load_from_json(note_folder)
+        return Note(meta)
+
     def _pass(self):
+        pass
+
+    def add_page(self, page_name):
+        if os.path.is_file(page_name):
+            raise FileExistsError(page_name)
+
+        p = Page(page_name)
+
+        self.meta.pages.add(page_name)
+        self.pages.add(p)
+
+        return p
+
+    def remove_page(self, page_name):
         pass
 
 class Page(object):
     """
         Représente un documents textuel dans une note
     """
-    def __init__(self):
+    def __init__(self, filename):
         super(Page, self).__init__()
-        self.text = ''
+        self._text = ''
+        self.filename = filename
+
+        if os.path.is_file(filename):
+            with open(filename, 'r') as f:
+                self._text = f.read()
+        else:
+            open(filename, 'a').close()
+
+    @property
+    def text(self):
+        return self._text
+
+    @text.setter
+    def text(self, value):
+        self._text = value
+        with open(self.filename, 'w') as f:
+            f.write(value)
 
     def get_tags(self, note):
         """
@@ -53,6 +98,7 @@ class NoteMeta(object):
         self.pages = list()
         self.attachments = list()
 
+    @staticmethod
     def load_from_json(json_file):
 
         data = None
